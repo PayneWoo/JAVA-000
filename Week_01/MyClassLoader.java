@@ -1,8 +1,3 @@
-## Week01
-
-### 自定义类加载器
-
-```java
 package com.payne.jvm;
 
 import java.io.*;
@@ -27,7 +22,7 @@ public class MyClassLoader extends ClassLoader {
      */
     public static final String CLASS_NAME = "Hello";
 
-    /**a
+    /**
      * 方法名
      */
     public static final String METHOD_NAME = "hello";
@@ -124,9 +119,3 @@ public class MyClassLoader extends ClassLoader {
     }
 
 }
-
-```
-
-## JVM内存体系图
-
-![JVM内存体系](https://i.loli.net/2020/10/21/NnSeXa8DEC79Krp.png)

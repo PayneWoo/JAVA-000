@@ -1,9 +1,7 @@
-# 电商交易场景
+-- ----------------------------
+-- Table structure for user_info
+-- ----------------------------
 
-## 一、电商交易场景-表结构设计
-
-### 1.用户表
-```
 CREATE TABLE `user_info` (
 
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -35,10 +33,12 @@ CREATE TABLE `user_info` (
   UNIQUE KEY `uk_buyer_id` (`buyer_id`) COMMENT '用户作为买方的ID-唯一索引',
   UNIQUE KEY `uk_seller_id` (`seller_id`) COMMENT '用户作为卖方的ID-唯一索引'
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
-```
 
-### 2.订单表
-```
+
+-- ----------------------------
+-- Table structure for order_record
+-- ----------------------------
+
 CREATE TABLE `order_record` (
 
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -67,11 +67,12 @@ CREATE TABLE `order_record` (
   UNIQUE KEY `uk_web_pay_no` (`web_pay_no`) COMMENT '第三方支付流水号-唯一索引'
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
 
-```
 
-### 3.商品表
 
-```
+-- ----------------------------
+-- Table structure for goods_info
+-- ----------------------------
+
 CREATE TABLE `goods_info`(
 
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -98,5 +99,3 @@ CREATE TABLE `goods_info`(
   UNIQUE KEY `uk_goods_no` (`goods_no`) COMMENT '商品编号-唯一索引',
   UNIQUE KEY `uk_goods_barcode` (`goods_barcode`) COMMENT '商品条形码-唯一索引'
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = Dynamic;
-
-```

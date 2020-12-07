@@ -8,7 +8,7 @@
 
 
 1.1: 基于 AbstractRoutingDataSource 或者 自定义注解 readOnly 实现自动切换数据源。
-[AbstractRoutingDataSource 结合 AOP 实现自动切换数据源](https://github.com/PayneWoo/JAVA-000/tree/master/Week_07/abstract-routing-data-source-demo)
+[AbstractRoutingDataSource 结合 AOP 实现自动切换数据源](https://github.com/PayneWoo/JAVA-000/tree/master/Week_07/abstract-routing-data-source)
 
 
 ### 读写分离 - 数据库框架版本 2.0

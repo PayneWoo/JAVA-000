@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.payne.shardingspherejdbc.mapper.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.payne.shardingspherejdbc.model.OrderInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="seller_id" jdbcType="VARCHAR" property="sellerId" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="snapshot_id" jdbcType="VARCHAR" property="snapshotId" />
+    <result column="business_type" jdbcType="TINYINT" property="businessType" />
+    <result column="order_amount" jdbcType="DECIMAL" property="orderAmount" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="pay_way" jdbcType="TINYINT" property="payWay" />
+    <result column="pay_channel" jdbcType="TINYINT" property="payChannel" />
+    <result column="pay_url" jdbcType="VARCHAR" property="payUrl" />
+    <result column="merchant_pay_no" jdbcType="VARCHAR" property="merchantPayNo" />
+    <result column="web_pay_no" jdbcType="VARCHAR" property="webPayNo" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="pay_time" jdbcType="BIGINT" property="payTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, order_id, user_id, seller_id, goods_no, snapshot_id, business_type, order_amount, pay_amount, pay_way,
+    pay_channel, pay_url, merchant_pay_no, web_pay_no, order_status,create_time, pay_time, update_time
+  </sql>
+
+  <select id="selectByOrderId" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List" />
+    from
+        t_order
+    where
+        1=1
+        <if test="userId !=null and userId !=''">
+          AND user_id=#{userId}
+        </if>
+        <if test="orderId !=null and orderId !=''">
+          AND order_id=#{orderId}
+        </if>
+  </select>
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List" />
+    from t_order
+  </select>
+
+  <insert id="insert" parameterType="com.payne.shardingspherejdbc.model.OrderInfo">
+    insert into t_order (id, user_id, order_id, seller_id, goods_no, snapshot_id, order_amount, pay_amount, pay_way,
+     pay_channel, pay_url, merchant_pay_no, web_pay_no, order_status)
+    values (
+        #{id,jdbcType=BIGINT},
+        #{userId,jdbcType=BIGINT},
+        #{orderId,jdbcType=BIGINT},
+        #{sellerId,jdbcType=VARCHAR},
+        #{goodsNo,jdbcType=VARCHAR},
+        #{snapshotId,jdbcType=VARCHAR},
+        #{orderAmount,jdbcType=DECIMAL},
+        #{payAmount,jdbcType=DECIMAL},
+        #{payWay,jdbcType=TINYINT},
+        #{payChannel,jdbcType=TINYINT},
+        #{payUrl,jdbcType=VARCHAR},
+        #{merchantPayNo,jdbcType=VARCHAR},
+        #{webPayNo,jdbcType=VARCHAR},
+        #{orderStatus,jdbcType=TINYINT}
+    )
+  </insert>
+</mapper>

@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `t_order` (
+    `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+    `order_id` bigint(11) NOT NULL COMMENT '订单编号',
+    `user_id` bigint(32) NOT NULL COMMENT '买方ID',
+    `seller_id` varchar(32) NOT NULL COMMENT '卖方ID',
+    `goods_no` varchar(32) NOT NULL COMMENT '订单商品的编号',
+    `snapshot_id` varchar(32) NOT NULL COMMENT '交易时商品的快照ID',
+    `business_type` tinyint(5) unsigned DEFAULT NULL COMMENT '订单的业务类型',
+    `order_amount` decimal(12, 4) NOT NULL COMMENT '订单金额',
+    `pay_amount` decimal(12, 4) NOT NULL COMMENT '实际支付金额',
+    `pay_way` tinyint(5) unsigned NOT NULL COMMENT '支付方式',
+    `pay_channel` tinyint(5) unsigned DEFAULT NULL COMMENT '支付渠道',
+    `pay_url` varchar(256) DEFAULT NULL COMMENT '支付地址',
+    `merchant_pay_no` varchar(32) DEFAULT NULL COMMENT '商户支付流水号',
+    `web_pay_no` varchar(64) DEFAULT NULL COMMENT '第三方支付流水号',
+    `order_status` tinyint(5) unsigned DEFAULT 0 COMMENT '订单状态 (0未支付,1已支付,2支付未确认,3已退费,4部分退费,5确认失败)',
+    `create_time` bigint(10) unsigned DEFAULT NULL COMMENT '订单创建时间戳',
+    `pay_time` bigint(10) unsigned DEFAULT NULL COMMENT '订单支付时间戳',
+    `update_time` bigint(10) unsigned DEFAULT  NULL COMMENT '订单更新时间戳',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
